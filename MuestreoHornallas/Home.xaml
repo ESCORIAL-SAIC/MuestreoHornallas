@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MuestreoHornallas.Home"
+    Title="Inicio">
+    <ContentPage.Resources>
+        <Style 
+            x:Key="ImageButtonPlay" 
+            TargetType="ImageButton">
+            <Setter 
+                Property="Source" 
+                Value="{
+                    AppThemeBinding
+                    Light=play_circle_filled_primary_48dp.svg,
+                    Dark=play_circle_filled_white_48dp.svg
+                }" />
+        </Style>
+        <Style 
+            x:Key="ImageButtonStop" 
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="{
+                    AppThemeBinding
+                    Light=stop_circle_primary_48dp.svg,
+                    Dark=stop_circle_white_48dp.svg
+                }" />
+        </Style>
+        <Style
+            x:Key="ButtonSelected"
+            TargetType="Button">
+            <Setter
+                Property="BackgroundColor"
+                Value="{StaticResource SelectedButtonColor}" />
+        </Style>
+        <Style
+            x:Key="ButtonUnselected"
+            TargetType="Button">
+            <Setter
+                Property="BackgroundColor"
+                Value="{StaticResource Primary}" />
+        </Style>
+        <Style
+            x:Key="Hornalla01Encendida"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="encendida_01.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla02Encendida"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="encendida_02.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla03Encendida"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="encendida_03.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla04Encendida"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="encendida_04.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla01Apagada"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="apagada_01.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla02Apagada"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="apagada_02.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla03Apagada"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="apagada_03.png" />
+        </Style>
+        <Style
+            x:Key="Hornalla04Apagada"
+            TargetType="ImageButton">
+            <Setter
+                Property="Source"
+                Value="apagada_04.png" />
+        </Style>
+        <Style
+            x:Key="TextoOk"
+            TargetType="Label">
+            <Setter
+                Property="TextColor"
+                Value="{StaticResource colorConfirmation}" />
+        </Style>
+        <Style
+            x:Key="TextoError"
+            TargetType="Label">
+            <Setter
+                Property="TextColor"
+                Value="{StaticResource colorDeletion}" />
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="StartAndExpand">
+            <!--GRID TIMER-->
+            <Grid
+                Margin="0, 30, 0, 0"
+                RowSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ImageButton
+                    x:Name="PlayButton"
+                    Style="{
+                        StaticResource ImageButtonPlay
+                    }"
+                    Pressed="ImageButtonPressed"
+                    Released="ImageButtonReleased"
+                    Grid.Column="0"
+                    Grid.Row="0">
+                </ImageButton>
+                <Label
+                    x:Name="TimerLabel"
+                    FontSize="Title"
+                    Text="Cronómetro" 
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+            </Grid>
+            <!--FIN GRID TIMER-->
+            <!--GRID PARA ALINEAR COCINA A PARTE SUPERIOR Y DEMAS ITEMS DEBAJO-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="Auto"/>
+                    <RowDefinition 
+                        Height="Auto"/>
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--GRID COCINA-->
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    ColumnSpacing="-27">
+                    <Grid.Shadow>
+                        <Shadow 
+                            Brush="{
+                                AppThemeBinding 
+                                Light=Black, 
+                                Dark=Grey
+                            }"
+                            Offset="20, 20"
+                            Opacity="0.4" />
+                    </Grid.Shadow>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ImageButton
+                        x:Name="Hornalla01ImageButton"
+                        Clicked="Hornalla01ImageButton_Clicked"
+                        Style="{StaticResource Hornalla01Apagada}"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        WidthRequest="100"/>
+                    <ImageButton
+                        x:Name="Hornalla02ImageButton"
+                        Clicked="Hornalla02ImageButton_Clicked"
+                        Style="{StaticResource Hornalla02Apagada}"
+                        Grid.Row="0"
+                        Grid.Column="1" 
+                        WidthRequest="100"/>
+                    <ImageButton
+                        x:Name="Hornalla03ImageButton"
+                        Clicked="Hornalla03ImageButton_Clicked"
+                        Style="{StaticResource Hornalla03Apagada}"
+                        Grid.Row="1"
+                        Grid.Column="0" 
+                        WidthRequest="100"/>
+                    <ImageButton
+                        x:Name="Hornalla04ImageButton"
+                        Clicked="Hornalla04ImageButton_Clicked"
+                        Style="{StaticResource Hornalla04Apagada}"
+                        Grid.Row="1"
+                        Grid.Column="1" 
+                        WidthRequest="100"/>
+                </Grid>
+                <!--FIN GRID COCINA-->
+                <!--GRID PARA ALINEACION DE BOTONES-->
+                <Grid
+                    Margin="0, 30, 0, 0"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--GRID ENCENDIDO ELECTRONICO-->
+                    <Grid
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            x:Name="EeokButton"
+                            Clicked="EEOKButton_Clicked"
+                            Text="EE OK"
+                            Grid.Row="0"
+                            Grid.Column="0"/>
+                        <Button
+                            x:Name="EenookButton"
+                            Clicked="EENOOKButton_Clicked"
+                            Text="EE NO OK"
+                            Grid.Row="0"
+                            Grid.Column="1"/>
+                    </Grid>
+                    <!--FIN GRID ENCENDIDO ELECTRONICO-->
+                    <!--GRID PORCENTAJE VOLADURA-->
+                    <Grid
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            x:Name="Voladura0Button"
+                            Clicked="Voladura0Button_Clicked"
+                            Padding="1"
+                            Text="0%"
+                            Grid.Row="0"
+                            Grid.Column="0" />
+                        <Button
+                            x:Name="Voladura25Button"
+                            Clicked="Voladura25Button_Clicked"
+                            Padding="1"
+                            Text="25%"
+                            Grid.Row="0"
+                            Grid.Column="1" />
+                        <Button
+                            x:Name="Voladura50Button"
+                            Clicked="Voladura50Button_Clicked"
+                            Padding="1"
+                            Text="50%"
+                            Grid.Row="0"
+                            Grid.Column="2" />
+                        <Button 
+                            x:Name="Voladura75Button"
+                            Clicked="Voladura75Button_Clicked"
+                            Padding="1"
+                            Text="75%"
+                            Grid.Row="0"
+                            Grid.Column="3" />
+                        <Button
+                            x:Name="Voladura100Button"
+                            Clicked="Voladura100Button_Clicked"
+                            Padding="1"
+                            Text="100%"
+                            Grid.Row="0"
+                            Grid.Column="4" />
+                    </Grid>
+                    <!--FIN GRID PORCENTAJE VOLADURA-->
+                    <!--GRID RETIENE-->
+                    <Grid
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            x:Name="RetieneButton"
+                            Clicked="RetieneButton_Clicked"
+                            Text="Retiene"
+                            Grid.Row="0"
+                            Grid.Column="0" />
+                        <Button
+                            x:Name="NoRetieneButton"
+                            Clicked="NoRetieneButton_Clicked"
+                            Text="No Retiene"
+                            Grid.Row="0"
+                            Grid.Column="1" />
+                    </Grid>
+                    <!--FIN GRID RETIENE-->
+                </Grid>
+                <!--FIN GRID PARA ALINEACION DE BOTONES-->
+                <!--GRID PARA BOTON DE CONFIRMACION-->
+                <Grid
+                    Grid.Column="0"
+                    Grid.Row="2" 
+                    Margin="0, 10, 0, 0">
+                    <Button
+                        x:Name="ConfirmarButton"
+                        Pressed="ConfirmarButton_Pressed"
+                        Grid.Row="0"
+                        Grid.Column="0" 
+                        Style="{StaticResource ButtonConfirmar}"/>
+                </Grid>
+                <!--FIN GRID PARA BOTON DE CONFIRMACION-->
+            </Grid>
+            <!--FIN GRID PARA ALINEAR COCINA A PARTE SUPERIOR Y DEMAS ITEMS DEBAJO-->
+            <Label
+                x:Name="EstadoLabel" 
+                HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

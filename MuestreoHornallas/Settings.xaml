@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MuestreoHornallas.Settings"
+    Title="Configuraciones">
+
+    <RefreshView 
+        x:Name="RefreshView" 
+        IsRefreshing="False" 
+        Refreshing="OnRefresh">
+        <ScrollView>
+            <Grid
+                Margin="10, 30, 10, 30">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*" />
+                    <RowDefinition 
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    Spacing="25"
+                    Padding="30,0"
+                    VerticalOptions="StartAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition 
+                                Height="40" />
+                            <RowDefinition 
+                                Height="40" />
+                            <RowDefinition 
+                                Height="40" />
+                            <RowDefinition 
+                                Height="40" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Text="Presion de gas"
+                            VerticalTextAlignment="Center"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="0"
+                            Grid.Column="0" />
+                        <Label
+                            Text="Presión atmosférica"
+                            VerticalTextAlignment="Center"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            Grid.Column="0" />
+                        <Label
+                            Text="Humedad ambiente"
+                            VerticalTextAlignment="Center"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="2"
+                            Grid.Column="0" />
+                        <Label 
+                            Text="Temperatura ambiente"
+                            VerticalTextAlignment="Center"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="3"
+                            Grid.Column="0" />
+                        <Entry
+                            x:Name="PresionGasEntry"
+                            Placeholder="Presión de gas"
+                            Keyboard="Numeric"
+                            Grid.Row="0"
+                            Grid.Column="2" />
+                        <Entry
+                            x:Name="PresionAtmosfericaEntry"
+                            Placeholder="Presion atmosférica"
+                            Keyboard="Numeric"
+                            Grid.Row="1"
+                            Grid.Column="2" />
+                        <Entry
+                            x:Name="HumedadAmbienteEntry"
+                            Placeholder="Humedad ambiente"
+                            Keyboard="Numeric"
+                            Grid.Row="2"
+                            Grid.Column="2" />
+                        <Entry
+                            x:Name="TemperaturaAmbienteEntry"
+                            Placeholder="Temperatura ambiente"
+                            Keyboard="Numeric"
+                            Grid.Row="3"
+                            Grid.Column="2" />
+                        <ActivityIndicator
+                            x:Name="LoadingActivityIndicator"
+                            IsRunning="False"
+                            IsVisible="False"
+                            Grid.Column="2"
+                            Grid.Row="2" />
+                    </Grid>
+                    <Picker 
+                        x:Name="CocinaPicker" 
+                        Title="Seleccionar cocina..." >
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="descripcion" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                    <Entry
+                        Placeholder="OpenWeather API key..."
+                        x:Name="ApiKeyEntry" />
+                    <Entry
+                        Placeholder="Escorial API URL..."
+                        x:Name="ApiUrlEntry" />
+                </StackLayout>
+                <Button 
+                    x:Name="GuardarButton"
+                    Clicked="GuardarButton_Clicked"
+                    Text="Guardar" 
+                    Grid.Row="1" 
+                    VerticalOptions="End" />
+            </Grid>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
