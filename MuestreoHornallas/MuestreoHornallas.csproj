@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net8.0-android</TargetFrameworks>
     <OutputType>Exe</OutputType>
@@ -12,8 +12,8 @@
     <ApplicationId>com.escorial.hornallas</ApplicationId>
     <ApplicationIdGuid>9cfcc0cb-5972-483a-b1a0-9745d38efe6b</ApplicationIdGuid>
     <!-- Versions -->
-    <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>0.1.1-dev</ApplicationDisplayVersion>
+    <ApplicationVersion>140</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
