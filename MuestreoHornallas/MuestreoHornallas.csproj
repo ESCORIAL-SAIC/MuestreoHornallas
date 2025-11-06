@@ -13,7 +13,7 @@
     <ApplicationIdGuid>9cfcc0cb-5972-483a-b1a0-9745d38efe6b</ApplicationIdGuid>
     <!-- Versions -->
     <ApplicationDisplayVersion>0.1.1-dev</ApplicationDisplayVersion>
-    <ApplicationVersion>10127</ApplicationVersion>
+    <ApplicationVersion>10128</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
