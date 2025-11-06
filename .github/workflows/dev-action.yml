@@ -141,7 +141,7 @@ jobs:
         run: |
           $keystorePath = Join-Path $PWD "my-release-key.keystore"
           $outputDir = Join-Path $PWD "output"
-          dotnet publish "MuestreoHornallas/MuestreoHornallas.csproj" -f net8.0-android -c Release -o $outputDir /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=$keystorePath /p:AndroidSigningKeyAlias="${{ secrets.ORG_ANDROID_KEY_ALIAS }}" /p:AndroidSigningKeyPass="${{ secrets.ORG_ANDROID_KEY_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.ORG_ANDROID_KEYSTORE_PASSWORD }}" /p:PublishTrimmed=true /p:RunAOTCompilation=true /p:EmbedAssembliesIntoApk=true
+          dotnet publish "MuestreoHornallas/MuestreoHornallas.csproj" -f net8.0-android -c Release -o $outputDir /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=$keystorePath /p:AndroidSigningKeyAlias="${{ secrets.ORG_ANDROID_KEY_ALIAS }}" /p:AndroidSigningKeyPass="${{ secrets.ORG_ANDROID_KEY_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.ORG_ANDROID_KEYSTORE_PASSWORD }}" /p:PublishTrimmed=false /p:RunAOTCompilation=false /p:EmbedAssembliesIntoApk=true
 
           $apkPath = Get-ChildItem $outputDir -Filter *.apk | Select-Object -First 1
 
